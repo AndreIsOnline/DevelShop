@@ -3,7 +3,6 @@ package kosmok.teamlebimbe.ecommerce.service;
 import javax.validation.Valid;
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
-import kosmok.teamlebimbe.ecommerce.entities.Item;
 import kosmok.teamlebimbe.ecommerce.entities.RegistrationCustomer;
 import kosmok.teamlebimbe.ecommerce.entities.Seller;
 import kosmok.teamlebimbe.ecommerce.model.ItemModel;
@@ -18,7 +17,7 @@ import kosmok.teamlebimbe.ecommerce.controller.dto.PostItemDto;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.dao.ItemDao;
 
-import java.util.List;
+
 import java.util.Optional;
 
 

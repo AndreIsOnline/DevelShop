@@ -1,7 +1,6 @@
 package kosmok.teamlebimbe.ecommerce.controller;
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
-import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import kosmok.teamlebimbe.ecommerce.controller.dto.AddToCartDto;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
