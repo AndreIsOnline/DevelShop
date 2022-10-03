@@ -3,19 +3,14 @@ package kosmok.teamlebimbe.ecommerce.controller;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
-import kosmok.teamlebimbe.ecommerce.controller.dto.AddToCartDto;
 import kosmok.teamlebimbe.ecommerce.controller.dto.ItemsInCartDto;
-import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
-import kosmok.teamlebimbe.ecommerce.dao.ShoppingKartDao;
+import kosmok.teamlebimbe.ecommerce.dao.ShoppingCartDao;
 import kosmok.teamlebimbe.ecommerce.entities.Item;
-import kosmok.teamlebimbe.ecommerce.entities.RegistrationCustomer;
-import kosmok.teamlebimbe.ecommerce.entities.ShoppingKart;
 import kosmok.teamlebimbe.ecommerce.repository.IShoppingKart;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -28,7 +23,7 @@ public class GetShoppingCartByUserId {
     private ItemRepository itemRepository;
 
     @Autowired
-    private ShoppingKartDao shoppingKartDao;
+    private ShoppingCartDao shoppingCartDao;
 
     @Autowired
     private IShoppingKart iShoppingKart;
@@ -44,7 +39,7 @@ public class GetShoppingCartByUserId {
         Long currentUserId = AuthenticationContext.get().getUserId();
 
         // in questa lista ci sono tutti gli item_id presenti nella lista associata ad un customer presi dalla query
-        List<Long> itemsListFromQuery = shoppingKartDao.getShoppingCartItemsList(currentUserId);
+        List<Long> itemsListFromQuery = shoppingCartDao.getShoppingCartItemsList(currentUserId);
 
         List<ItemsInCartDto> currentCartItemList = new ArrayList<>();
 
@@ -64,7 +59,7 @@ public class GetShoppingCartByUserId {
                     // qui voglio inserire all'interno del dto da ritornare il COUNT cioè la quantità totale nel carrell
 
 
-                    itemFromRep.setCount(shoppingKartDao.getItemQuantityByItemIdAndCustomerId(itemId, currentUserId));
+                    itemFromRep.setCount(shoppingCartDao.getItemQuantityByItemIdAndCustomerId(itemId, currentUserId));
 
                     itemFromRep.setId(currentItem.get().getId());
 

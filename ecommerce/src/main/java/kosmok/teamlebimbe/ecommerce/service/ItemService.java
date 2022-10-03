@@ -4,7 +4,7 @@ import javax.validation.Valid;
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import kosmok.teamlebimbe.ecommerce.dao.ItemDao;
-import kosmok.teamlebimbe.ecommerce.dao.ShoppingKartDao;
+import kosmok.teamlebimbe.ecommerce.dao.ShoppingCartDao;
 import kosmok.teamlebimbe.ecommerce.model.ItemModel;
 
 import kosmok.teamlebimbe.ecommerce.entities.RegistrationCustomer;
@@ -31,7 +31,7 @@ public class ItemService {
 	private ItemDao itemDao;
 
 	@Autowired
-	private ShoppingKartDao shoppingKartDao;
+	private ShoppingCartDao shoppingCartDao;
 
 	@Autowired
 	private IRegistrationCustomerRepository iRegistrationCustomerRepository;
@@ -71,7 +71,7 @@ public class ItemService {
 
 		if(iShoppingKart.findById(payload.getItemId()).isPresent()) {
 			int newQuantity = payload.getCount() + iShoppingKart.findById(payload.getItemId()).get().getQuantity();
-			shoppingKartDao.updateItemQuantity(newQuantity, payload.getItemId());
+			shoppingCartDao.updateItemQuantity(newQuantity, payload.getItemId());
 			if(newQuantity == 0){
 				return new BaseResponse("DB_OPERATION_ERROR");
 			}else{
