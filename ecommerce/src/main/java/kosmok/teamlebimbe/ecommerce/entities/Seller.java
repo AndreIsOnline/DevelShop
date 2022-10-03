@@ -5,7 +5,6 @@ package kosmok.teamlebimbe.ecommerce.entities;
 
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.Set;
 
 @Entity

@@ -1,8 +1,8 @@
 package kosmok.teamlebimbe.ecommerce.service;
 
+import kosmok.teamlebimbe.ecommerce.dao.RegistrationDao;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.controller.dto.RegistrationRequest;
-import kosmok.teamlebimbe.ecommerce.dao.RegistrationDao;
 import kosmok.teamlebimbe.ecommerce.exception.EmailAlredyExistException;
 import kosmok.teamlebimbe.ecommerce.exception.UsernameAlredyExistException;
 import org.springframework.beans.factory.annotation.Autowired;

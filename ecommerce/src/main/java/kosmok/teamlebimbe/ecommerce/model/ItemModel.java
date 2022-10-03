@@ -1,11 +1,5 @@
 package kosmok.teamlebimbe.ecommerce.model;
 
-import kosmok.teamlebimbe.ecommerce.entities.Seller;
-import kosmok.teamlebimbe.ecommerce.entities.ShoppingKart;
-
-import javax.persistence.*;
-import java.util.Set;
-
 public class ItemModel {
 
     private Long id;

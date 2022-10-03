@@ -26,7 +26,7 @@ public class TakeItemDescription {
 
     @GetMapping("/description/{id}")
     @PublicEndpoint
-    public  Item getDescription(@PathVariable  long id) throws IOException {
+    public Item getDescription(@PathVariable  long id) throws IOException {
         if(itemRepository.existsById(id)) {
             Item getItem = itemRepository.getReferenceById(id);
             return getItem;

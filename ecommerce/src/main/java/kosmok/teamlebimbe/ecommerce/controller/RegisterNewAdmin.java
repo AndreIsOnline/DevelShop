@@ -1,6 +1,5 @@
 package kosmok.teamlebimbe.ecommerce.controller;
 
-import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.utils.BCryptPasswordEncoder;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
