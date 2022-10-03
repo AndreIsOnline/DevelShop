@@ -30,6 +30,7 @@ public class Item {
     @OneToMany(mappedBy = "item")
     private Set<ShoppingKart> orderItems;
 
+    @JsonIgnore
     @ManyToOne
     @JsonIgnore
     private Seller sellerId;
