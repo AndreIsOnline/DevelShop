@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/add-into-kart")
+@RequestMapping("/add-into-cart")
 public class AddItemToCart {
 
     @Autowired

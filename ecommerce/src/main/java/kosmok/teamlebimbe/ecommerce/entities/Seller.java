@@ -1,9 +1,5 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
-
-
-
-
 import javax.persistence.*;
 import java.util.Set;
 
