@@ -1,6 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.dao;
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
+import kosmok.teamlebimbe.ecommerce.entities.Item;
 import kosmok.teamlebimbe.ecommerce.model.ItemModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ItemDao {
@@ -53,10 +55,14 @@ public class ItemDao {
 	}
 
 	public boolean checkCount(Integer count, Long itemId) {
-		return jdbcTemplate.queryForObject("SELECT quantity_in_stock FROM ITEM WHERE item_id = ?", Integer.class, itemId) >= count;
+		return jdbcTemplate.queryForObject("SELECT quantity_in_stock FROM ITEM WHERE item_id = ?", Integer.class,
+				itemId) >= count;
 	}
 
 	public int updateItemQuantity(int i, Long itemId) {
 		return jdbcTemplate.update("UPDATE ITEM SET quantity_in_stock=? where item_id=?",i,itemId);
 	}
+
+
+
 }
