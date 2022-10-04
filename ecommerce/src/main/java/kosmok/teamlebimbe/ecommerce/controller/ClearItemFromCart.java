@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("clear-one-item")
+@RequestMapping("/clear-one-item")
 public class ClearItemFromCart {
 
 
@@ -26,7 +26,7 @@ public class ClearItemFromCart {
 
 @DeleteMapping
 @RoleSecurity("customer")
-    private BaseResponse clearOne(@RequestParam String itemName){
+    private BaseResponse clearOne(@RequestParam Long itemId){
         Long itemId = itemRepository.findByName(itemName).getId();
         Long customerId = AuthenticationContext.get().getUserId();
         shoppingCartDao.deleteItemFromCart(itemId, customerId);

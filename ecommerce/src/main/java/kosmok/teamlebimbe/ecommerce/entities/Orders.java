@@ -11,16 +11,18 @@ import java.util.List;
 
 public class Orders {
 
-    //mettere l item id
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id", nullable = false)
     private Long id;
-    @Column(nullable = false)
+    @Column(name = "order_date", nullable = false)
     private Long orderDate=System.currentTimeMillis();
 
-    @Column(nullable = false)
-    private Integer quantity;
+    @Column(name = "customer_id", nullable = false)
+    private Long customerId;
+
+    @OneToMany(mappedBy = "orderId")
+    private List<OrderItems> itemsInOrder;
 
     public Long getId() {
         return id;
@@ -38,16 +40,11 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public Long getCustomerId() {
+        return customerId;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
     }
-
-
-
-
-
 }
