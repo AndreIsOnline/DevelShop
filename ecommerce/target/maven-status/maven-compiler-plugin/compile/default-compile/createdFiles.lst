@@ -8,7 +8,6 @@ kosmok\teamlebimbe\ecommerce\exception\UnauthorizedException.class
 kosmok\teamlebimbe\ecommerce\EcommercelebimbeApplication.class
 kosmok\teamlebimbe\ecommerce\entities\StoreTypes.class
 kosmok\teamlebimbe\ecommerce\dao\UserDaoImpl.class
-kosmok\teamlebimbe\ecommerce\controller\ClearItemByIdFromCart.class
 kosmok\teamlebimbe\ecommerce\exception\UsernameAlredyExistException.class
 kosmok\teamlebimbe\ecommerce\repository\IRegistrationCustomerRepository.class
 kosmok\teamlebimbe\ecommerce\service\RegistrationService.class
@@ -17,6 +16,7 @@ kosmok\teamlebimbe\ecommerce\dao\ItemDao.class
 kosmok\teamlebimbe\ecommerce\dao\UserDaoImpl$1.class
 kosmok\teamlebimbe\ecommerce\controller\RegisterNewCustomer.class
 kosmok\teamlebimbe\ecommerce\dao\ShoppingCartDao.class
+kosmok\teamlebimbe\ecommerce\repository\IShoppingCart.class
 kosmok\teamlebimbe\ecommerce\controller\dto\ItemsInCartDto.class
 kosmok\teamlebimbe\ecommerce\controller\GetShoppingCartByUserId.class
 kosmok\teamlebimbe\ecommerce\repository\IAdminRepository.class
@@ -42,15 +42,9 @@ kosmok\teamlebimbe\ecommerce\controller\SearchItem.class
 kosmok\teamlebimbe\ecommerce\entities\Orders.class
 kosmok\teamlebimbe\ecommerce\dao\UserDaoImpl$2.class
 kosmok\teamlebimbe\ecommerce\controller\response\BaseResponse$StatusEnum.class
-kosmok\teamlebimbe\ecommerce\entities\PaymentType.class
 kosmok\teamlebimbe\ecommerce\controller\dto\AddToCartDto.class
 kosmok\teamlebimbe\ecommerce\controller\GetItemStoreName.class
 kosmok\teamlebimbe\ecommerce\controller\DeleteCustomer.class
 kosmok\teamlebimbe\ecommerce\entities\Review.class
 kosmok\teamlebimbe\ecommerce\controller\dto\PostItemDto.class
-kosmok\teamlebimbe\ecommerce\repository\IShoppingKart.class
-<<<<<<< HEAD
-=======
-kosmok\teamlebimbe\ecommerce\controller\response\GetItemStoreName.class
->>>>>>> e894229a1b70d010868b67bb0b65c6d545e3c544
 kosmok\teamlebimbe\ecommerce\entities\Seller.class
