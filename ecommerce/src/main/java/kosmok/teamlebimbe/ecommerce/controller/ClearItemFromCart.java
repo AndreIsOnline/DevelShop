@@ -4,7 +4,7 @@ import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.Authen
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.dao.ShoppingCartDao;
-import kosmok.teamlebimbe.ecommerce.repository.IShoppingKart;
+import kosmok.teamlebimbe.ecommerce.repository.IShoppingCart;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
