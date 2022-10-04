@@ -1,5 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -35,6 +37,7 @@ public class RegistrationCustomer {
     public Set<ShoppingKart> getCustomerItem() {
         return customerItem;
     }
+
 
     public void setCustomerItem(Set<ShoppingKart> customerItem) {
         this.customerItem = customerItem;

@@ -9,7 +9,7 @@ public class BaseResponse {
 
     public BaseResponse(String message) {
         if (!(message == null || message.length() == 0)) {
-            this.status = StatusEnum.KO;
+            this.status = StatusEnum.OK;
         }
         this.message = message;
     }

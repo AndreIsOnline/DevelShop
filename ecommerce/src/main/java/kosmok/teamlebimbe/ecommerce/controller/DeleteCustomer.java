@@ -1,5 +1,6 @@
 package kosmok.teamlebimbe.ecommerce.controller;
 
+import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.repository.IRegistrationCustomerRepository;
@@ -19,12 +20,15 @@ public class DeleteCustomer {
     private IRegistrationCustomerRepository iRegistrationCustomerRepository;
 
     @DeleteMapping("/{id}")
-    @RoleSecurity(value = "admin")
+    @RoleSecurity(value = {"admin","customer"})
     public BaseResponse deleteCustomerById(@PathVariable Long id) {
 
-        iRegistrationCustomerRepository.deleteById(id);
+        if(AuthenticationContext.get().getUserId() == id) {
+            iRegistrationCustomerRepository.deleteById(id);
+            return new BaseResponse("Customer with id " + id + " has been deleted from the repository");
 
-        return new BaseResponse("Customer with id " + id + " has been deleted from the repository");
+        }else return new BaseResponse("Deletion was not successful,if you don't are an Admin you can't delete another customer");
+
     }
 
 }

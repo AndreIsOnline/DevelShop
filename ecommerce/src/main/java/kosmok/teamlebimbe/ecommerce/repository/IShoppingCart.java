@@ -6,7 +6,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 
 @RepositoryRestResource
-public interface IShoppingKart extends JpaRepository<ShoppingKart, Long> {
+public interface IShoppingCart extends JpaRepository<ShoppingKart, Long> {
+
 
 
 }

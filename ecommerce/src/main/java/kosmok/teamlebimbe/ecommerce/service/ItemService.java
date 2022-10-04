@@ -5,13 +5,14 @@ import javax.validation.Valid;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import kosmok.teamlebimbe.ecommerce.dao.ItemDao;
 import kosmok.teamlebimbe.ecommerce.dao.ShoppingCartDao;
+import kosmok.teamlebimbe.ecommerce.entities.ShoppingKart;
 import kosmok.teamlebimbe.ecommerce.model.ItemModel;
 
 import kosmok.teamlebimbe.ecommerce.entities.RegistrationCustomer;
 import kosmok.teamlebimbe.ecommerce.entities.Seller;
 import kosmok.teamlebimbe.ecommerce.repository.IRegistrationCustomerRepository;
 import kosmok.teamlebimbe.ecommerce.repository.ISellerRepository;
-import kosmok.teamlebimbe.ecommerce.repository.IShoppingKart;
+import kosmok.teamlebimbe.ecommerce.repository.IShoppingCart;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,11 +44,11 @@ public class ItemService {
 	private ItemRepository itemRepository;
 
 	@Autowired
-	private IShoppingKart iShoppingKart;
+	private IShoppingCart iShoppingCart;
 
 	public BaseResponse save(PostItemDto payload, AuthenticationContext.Principal principal) {
 		Optional<Seller> seller = iSellerRepository.findByStoreName(principal.getUsername());
-        ItemModel currentItem = itemDao.findBySellerAndName(principal, payload.getName());
+		ItemModel currentItem = itemDao.findBySellerAndName(principal, payload.getName());
 		if (currentItem == null) {
 			if (itemDao.insertItems(payload.getName(), payload.getDescription(), payload.getQuantityInStock(),
 					payload.getUnitPrice(), seller.get().getId())) {
@@ -69,12 +70,24 @@ public class ItemService {
 	public BaseResponse addToCart(@Valid AddToCartDto payload, AuthenticationContext.Principal principal) {
 		BaseResponse br = null;
 
-		if(iShoppingKart.findById(payload.getItemId()).isPresent()) {
-			int newQuantity = payload.getCount() + iShoppingKart.findById(payload.getItemId()).get().getQuantity();
-			shoppingCartDao.updateItemQuantity(newQuantity, payload.getItemId());
-			if(newQuantity == 0){
+		Long currentUserId = AuthenticationContext.get().getUserId();
+		Optional<ShoppingKart> itemToUpdate = iShoppingCart.findById(payload.getItemId());
+
+		System.out.println("ID FROM PRINCIPAL = " + currentUserId);
+		System.out.println("ITEM IS PRESENT? " + shoppingCartDao.checkIfUserHasItemInCart(payload.getItemId(), currentUserId));
+
+		if(itemToUpdate.isPresent() && shoppingCartDao.checkIfUserHasItemInCart(payload.getItemId(), currentUserId)) {
+			int quantityToUpdate = shoppingCartDao.getItemQuantityByItemIdAndCustomerId(
+					payload.getItemId(), currentUserId
+			) + payload.getCount();
+
+			System.out.println("NEW QUANTITY ISSS " + quantityToUpdate);
+
+			shoppingCartDao.updateItemQuantity(quantityToUpdate, payload.getItemId(), currentUserId);
+
+			if(quantityToUpdate == 0){
 				return new BaseResponse("DB_OPERATION_ERROR");
-			}else{
+			} else {
 				return new BaseResponse();
 			}
 		} else {

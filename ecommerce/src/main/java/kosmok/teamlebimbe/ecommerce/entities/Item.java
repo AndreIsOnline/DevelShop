@@ -32,7 +32,6 @@ public class Item {
 
     @JsonIgnore
     @ManyToOne
-    @JsonIgnore
     private Seller sellerId;
 
 

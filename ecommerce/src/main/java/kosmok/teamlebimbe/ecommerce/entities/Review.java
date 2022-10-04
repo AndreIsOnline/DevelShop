@@ -1,5 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,8 +19,10 @@ public class Review {
 
 
 
+
         @ManyToOne
         private RegistrationCustomer registrationCustomer;
+
 
         @ManyToOne
         private Item item;
