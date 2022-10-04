@@ -75,6 +75,7 @@ public class ShoppingCartDao {
         return null;
     }
 
+<<<<<<< HEAD
     public List<ShoppingCartModel> getAllItemsByCustomerId() {
         Long currentUserId = AuthenticationContext.get().getUserId();
         List<ShoppingCartModel> currentUserItemList = new ArrayList<>();
@@ -104,6 +105,11 @@ public class ShoppingCartDao {
         } catch (Exception e) {
 
         }
+=======
+    public int deleteItemFromCart(Long itemId, Long customerId){
+        return jdbcTemplate.update("DELETE FROM shopping_kart " +
+                "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
+>>>>>>> e2fa2ddb790d98dc48e3b9a9117a96dd43b46970
     }
 
 
