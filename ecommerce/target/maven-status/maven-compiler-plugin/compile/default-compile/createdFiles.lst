@@ -1,5 +1,6 @@
 kosmok\teamlebimbe\ecommerce\repository\IReviewRepository.class
 kosmok\teamlebimbe\ecommerce\dao\ItemDao$1.class
+kosmok\teamlebimbe\ecommerce\dao\UpdateInfoDao.class
 kosmok\teamlebimbe\ecommerce\model\ItemModel.class
 kosmok\teamlebimbe\ecommerce\exception\EmailAlredyExistException.class
 kosmok\teamlebimbe\ecommerce\configuration\AuthorizationConfiguration.class
@@ -32,6 +33,7 @@ kosmok\teamlebimbe\ecommerce\WebSecurityConfiguration.class
 kosmok\teamlebimbe\ecommerce\dao\RegistrationDao.class
 kosmok\teamlebimbe\ecommerce\controller\TakeItemDescription.class
 kosmok\teamlebimbe\ecommerce\entities\RegistrationCustomer.class
+kosmok\teamlebimbe\ecommerce\controller\UpdateCustomerInformation.class
 kosmok\teamlebimbe\ecommerce\controller\dto\RegistrationRequest.class
 kosmok\teamlebimbe\ecommerce\controller\response\BaseResponse.class
 kosmok\teamlebimbe\ecommerce\repository\ISellerRepository.class
@@ -46,5 +48,7 @@ kosmok\teamlebimbe\ecommerce\controller\dto\AddToCartDto.class
 kosmok\teamlebimbe\ecommerce\controller\GetItemStoreName.class
 kosmok\teamlebimbe\ecommerce\controller\DeleteCustomer.class
 kosmok\teamlebimbe\ecommerce\entities\Review.class
+kosmok\teamlebimbe\ecommerce\controller\dto\UpdateCustomerDto.class
 kosmok\teamlebimbe\ecommerce\controller\dto\PostItemDto.class
+kosmok\teamlebimbe\ecommerce\controller\ClearItemFromCart.class
 kosmok\teamlebimbe\ecommerce\entities\Seller.class
