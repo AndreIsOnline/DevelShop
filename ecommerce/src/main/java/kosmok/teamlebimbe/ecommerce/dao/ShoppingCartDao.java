@@ -67,5 +67,10 @@ public class ShoppingCartDao {
         return null;
     }
 
+    public int deleteItemFromCart(Long itemId, Long customerId){
+        return jdbcTemplate.update("DELETE FROM shopping_kart " +
+                "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
+    }
+
 
 }
