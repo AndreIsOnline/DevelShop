@@ -2,11 +2,7 @@ spring:
   datasource:
     url: jdbc:mysql://127.0.0.1:3306/ecommerce
     username: root
-<<<<<<< HEAD
     password: aSSolo56*
-=======
-    password: Ruuta88!
->>>>>>> e2fa2ddb790d98dc48e3b9a9117a96dd43b46970
     driver-class-name: com.mysql.cj.jdbc.Driver
   output:
     ansi:

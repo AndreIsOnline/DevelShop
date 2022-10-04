@@ -33,6 +33,7 @@ public class ShoppingCartDao {
         // ritorna una lista di item_id presenti nello shopping cart associati all'id di un customer
         return null;
     }
+
     public Integer getItemQuantityByItemIdAndCustomerId(Long itemId, Long customerId) {
         Integer quantity = jdbcTemplate.queryForObject("SELECT quantity FROM shopping_kart WHERE " +
                 "item_item_id = ? AND registration_customer_id = ?", Integer.class, itemId, customerId);
@@ -54,6 +55,7 @@ public class ShoppingCartDao {
         }
         return null;
     }
+
     public boolean checkIfUserHasItemInCart(Long itemId, Long userId) {
         try {
             jdbcTemplate.queryForObject("SELECT 1 FROM shopping_kart sk WHERE sk.item_item_id = ? " +
@@ -64,6 +66,7 @@ public class ShoppingCartDao {
         }
     }
 
+<<<<<<< HEAD
     public List<Boolean> getItemId(Long id) {
         try {
             return jdbcTemplate.queryForList("SELECT item_item_id FROM shopping_kart WHERE " +
@@ -76,6 +79,8 @@ public class ShoppingCartDao {
     }
 
 
+=======
+>>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
     public List<ShoppingCartModel> getAllItemsByCustomerId() {
         Long currentUserId = AuthenticationContext.get().getUserId();
         List<ShoppingCartModel> currentUserItemList = new ArrayList<>();
@@ -106,11 +111,20 @@ public class ShoppingCartDao {
 
         }
     }
+<<<<<<< HEAD
     public int deleteItemFromCart(Long itemId, Long customerId){
         return jdbcTemplate.update("DELETE FROM shopping_kart " +
                 "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
 
+=======
+
+    public int deleteItemFromCart(Long itemId, Long customerId){
+        return jdbcTemplate.update("DELETE FROM shopping_kart " +
+                "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
+>>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
     }
 
 
 }
+
+

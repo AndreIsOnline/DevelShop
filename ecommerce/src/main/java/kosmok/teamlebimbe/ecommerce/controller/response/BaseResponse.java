@@ -15,7 +15,6 @@ public class BaseResponse {
     }
 
 
-
     public enum StatusEnum {
         OK, KO;
     }

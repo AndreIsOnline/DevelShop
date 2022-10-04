@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/ecommerce
     username: root
 <<<<<<< HEAD
+<<<<<<< HEAD
     password: qwerty
 =======
 <<<<<<< HEAD
@@ -11,6 +12,9 @@ spring:
     password: Ruuta88!
 >>>>>>> e2fa2ddb790d98dc48e3b9a9117a96dd43b46970
 >>>>>>> 23e1c8d46ff5d0e0e5ebecbe8521ebacbe78ce27
+=======
+    password: aSSolo56*
+>>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
     driver-class-name: com.mysql.cj.jdbc.Driver
   output:
     ansi:
