@@ -9,13 +9,13 @@ import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.entities.RegistrationCustomer;
 import kosmok.teamlebimbe.ecommerce.repository.IRegistrationCustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class UptadeCustomer {
+public class UpdateCustomer {
 
     @Autowired
     private IRegistrationCustomerRepository iRegistrationCustomerRepository;
@@ -23,15 +23,15 @@ public class UptadeCustomer {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @PutMapping("/change-customer/{id}")
+    @PatchMapping("/change-customer/{id}")
     @RoleSecurity(value = {"customer"})
     @JsonBackReference
     public BaseResponse updateCustomer(@RequestBody @NotNull RegistrationCustomer customer){
-           RegistrationCustomer newCustomer=iRegistrationCustomerRepository.getReferenceById(AuthenticationContext.get().getUserId());
+           RegistrationCustomer newCustomer = iRegistrationCustomerRepository.getReferenceById(AuthenticationContext.get().getUserId());
            newCustomer.setEmail(customer.getEmail());
            newCustomer.setPassword(bCryptPasswordEncoder.encode(customer.getPassword()));
            newCustomer.setUsername(customer.getUsername());
            iRegistrationCustomerRepository.save(newCustomer);
-           return new BaseResponse("Done!");
+           return new BaseResponse();
     }
 }

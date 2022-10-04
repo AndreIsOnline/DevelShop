@@ -7,11 +7,11 @@ public class BaseResponse {
 
     public BaseResponse() { }
 
-    public BaseResponse(String message) {
-        if (!(message == null || message.length() == 0)) {
-            this.status = StatusEnum.OK;
+    public BaseResponse(String errorMessage) {
+        if (!(errorMessage == null || errorMessage.length() == 0)) {
+            this.status = StatusEnum.KO;
         }
-        this.message = message;
+        this.message = errorMessage;
     }
 
 

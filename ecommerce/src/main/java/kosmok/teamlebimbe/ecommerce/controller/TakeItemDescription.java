@@ -2,6 +2,7 @@ package kosmok.teamlebimbe.ecommerce.controller;
 
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
+import kosmok.teamlebimbe.ecommerce.controller.dto.ItemDescriptionDto;
 import kosmok.teamlebimbe.ecommerce.entities.Item;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @RestController
 public class TakeItemDescription {
@@ -23,16 +25,25 @@ public class TakeItemDescription {
     @Autowired
     private HttpServletResponse httpServletResponse;
 
-//FIXME
+
     @GetMapping("/description/{id}")
     @PublicEndpoint
-    public Item getDescription(@PathVariable  long id) throws IOException {
-        if(itemRepository.existsById(id)) {
-            Item getItem = itemRepository.getReferenceById(id);
-            return getItem;
-        }else  {
-            httpServletResponse.sendError(104,"The item id does not exist");
+    public ItemDescriptionDto getDescription(@PathVariable  Long id) throws IOException {
+
+        Optional<Item> itemToCheck = itemRepository.findById(id);
+
+        ItemDescriptionDto itemToReturn = new ItemDescriptionDto();
+
+        if(itemToCheck.isPresent()) {
+            String currentItemDescription = itemToCheck.get().getDescription();
+            if(currentItemDescription != null && currentItemDescription.length() > 0) {
+                itemToReturn.setDecsription(currentItemDescription);
+                return itemToReturn;
+            } else {
+                return null;
+            }
         }
+
         return null;
     }
 }
