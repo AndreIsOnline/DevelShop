@@ -27,7 +27,9 @@ public class GetItemStoreName {
     @GetMapping
     @PublicEndpoint
     public List<String> viewItems(@RequestParam String storeName) {
+
         Optional<Seller> seller = sellerRepository.findByStoreName(storeName);
+
         if (seller.isPresent()) {
             return shoppingCartDao.getStore(seller.get().getId());
         }

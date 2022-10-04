@@ -32,12 +32,14 @@ public class DeployNewOrder  {
 
         List<ShoppingCartModel> currentCart = shoppingCartDao.getAllItemsByCustomerId();
 
-        // chiamiamo la query
-        orderDao.createNewOrderByCustomerIdAndByCartList(currentUserId, currentCart);
-        shoppingCartDao.deleteCartByCustomerId(currentUserId);
+        if(currentCart != null && currentCart.size() > 0) {
+            orderDao.createNewOrderByCustomerIdAndByCartList(currentUserId, currentCart);
+            shoppingCartDao.deleteCartByCustomerId(currentUserId);
 
-
-        return new BaseResponse();
+            return new BaseResponse();
+        } else {
+            return new BaseResponse("DB_ERROR");
+        }
     }
 
 }
