@@ -1,6 +1,6 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
-import net.minidev.json.annotate.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -30,7 +30,7 @@ public class RegistrationCustomer {
     private String lastName; */
     private Integer emailconfermata;
 
-
+    @JsonIgnore
     @OneToMany (mappedBy = "registrationCustomer")
     private Set<ShoppingKart> customerItem ;
 

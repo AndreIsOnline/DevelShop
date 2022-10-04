@@ -29,12 +29,7 @@ public class ClearItemFromCart {
 @DeleteMapping
 @RoleSecurity("customer")
     private BaseResponse clearOne(@RequestParam Long itemId){
-<<<<<<< HEAD
-        Long itemId = itemRepository.findByName(itemName).getId();
-        Long customerId = AuthenticationContext.get().getUserId();
-        shoppingCartDao.deleteItemFromCart(itemId, customerId);
-=======
->>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
+
 
         Long currentCustomerId = AuthenticationContext.get().getUserId();
 

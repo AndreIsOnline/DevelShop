@@ -66,21 +66,8 @@ public class ShoppingCartDao {
         }
     }
 
-<<<<<<< HEAD
-    public List<Boolean> getItemId(Long id) {
-        try {
-            return jdbcTemplate.queryForList("SELECT item_item_id FROM shopping_kart WHERE " +
-                    "registration_customer_id = ?", Boolean.class, id );
-
-        } catch (Exception e) {
-
-        }
-        return null;
-    }
 
 
-=======
->>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
     public List<ShoppingCartModel> getAllItemsByCustomerId() {
         Long currentUserId = AuthenticationContext.get().getUserId();
         List<ShoppingCartModel> currentUserItemList = new ArrayList<>();
@@ -111,17 +98,13 @@ public class ShoppingCartDao {
 
         }
     }
-<<<<<<< HEAD
-    public int deleteItemFromCart(Long itemId, Long customerId){
-        return jdbcTemplate.update("DELETE FROM shopping_kart " +
-                "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
-
-=======
 
     public int deleteItemFromCart(Long itemId, Long customerId){
         return jdbcTemplate.update("DELETE FROM shopping_kart " +
                 "WHERE registration_customer_id = ? AND item_item_id = ?", customerId, itemId);
->>>>>>> 963ad42a645748d828a28a1e2107483dd84e03e4
+
+
+
     }
 
 

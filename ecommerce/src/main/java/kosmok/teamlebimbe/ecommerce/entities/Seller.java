@@ -1,5 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -29,7 +31,7 @@ public class Seller {
     private Integer sellerRating;
     @Column(length = 11, nullable = false, name = "vat_number")
     private String ivaGame;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "sellerId")
     private Set<Seller> sellerId;
 
