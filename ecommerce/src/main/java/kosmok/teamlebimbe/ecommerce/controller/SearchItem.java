@@ -23,8 +23,6 @@ public class SearchItem {
 
     @GetMapping
     @PublicEndpoint
-
-
     public Item item(@RequestParam String name){
 
         return itemRepository.findByName(name);

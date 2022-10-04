@@ -23,7 +23,7 @@ public class TakeItemDescription {
     @Autowired
     private HttpServletResponse httpServletResponse;
 
-
+//FIXME
     @GetMapping("/description/{id}")
     @PublicEndpoint
     public Item getDescription(@PathVariable  long id) throws IOException {
