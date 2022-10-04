@@ -16,7 +16,7 @@ import kosmok.teamlebimbe.ecommerce.controller.dto.PostItemDto;
 
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/insert-item-into-stock")
 public class ItemManagementController {
 	
 	@Autowired

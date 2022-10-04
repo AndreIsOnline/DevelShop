@@ -1,5 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import net.minidev.json.annotate.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,9 +16,10 @@ public class ShoppingKart {
 
     private Long dateAdd=System.currentTimeMillis();
 
+    @JsonIgnore
     @ManyToOne
     private RegistrationCustomer registrationCustomer;
-
+    @JsonIgnore
     @ManyToOne
     private Item item;
 

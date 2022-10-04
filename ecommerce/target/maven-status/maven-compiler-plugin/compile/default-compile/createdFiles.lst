@@ -49,5 +49,8 @@ kosmok\teamlebimbe\ecommerce\controller\DeleteCustomer.class
 kosmok\teamlebimbe\ecommerce\entities\Review.class
 kosmok\teamlebimbe\ecommerce\controller\dto\PostItemDto.class
 kosmok\teamlebimbe\ecommerce\repository\IShoppingKart.class
+<<<<<<< HEAD
+=======
 kosmok\teamlebimbe\ecommerce\controller\response\GetItemStoreName.class
+>>>>>>> e894229a1b70d010868b67bb0b65c6d545e3c544
 kosmok\teamlebimbe\ecommerce\entities\Seller.class
