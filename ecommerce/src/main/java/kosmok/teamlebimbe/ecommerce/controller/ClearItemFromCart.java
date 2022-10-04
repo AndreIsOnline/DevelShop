@@ -26,8 +26,8 @@ public class ClearItemFromCart {
     @Autowired
     private ShoppingCartDao shoppingCartDao;
 
-@DeleteMapping
-@RoleSecurity("customer")
+    @DeleteMapping
+    @RoleSecurity("customer")
     private BaseResponse clearOne(@RequestParam Long itemId){
 
 

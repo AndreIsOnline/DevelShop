@@ -31,14 +31,13 @@ public class UpdateCustomerInformation{
         Long a = updateInfoDao.getIdByEmail(customer.getEmail());
         if(AuthenticationContext.get().getUserId() == a){
             updateInfoDao.UpdateCustomerInfo(customer);
-            return new BaseResponse("your information have been updated");
+            return new BaseResponse();
         }
         return new BaseResponse("something went wrong");
 
     }
 
-
-
+    
 }
 
 
