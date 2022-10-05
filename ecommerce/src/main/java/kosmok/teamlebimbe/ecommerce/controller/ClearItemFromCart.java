@@ -30,7 +30,6 @@ public class ClearItemFromCart {
     @RoleSecurity("customer")
     private BaseResponse clearOne(@RequestParam Long itemId){
 
-
         Long currentCustomerId = AuthenticationContext.get().getUserId();
 
         Optional<Item> currentItem = itemRepository.findById(itemId);

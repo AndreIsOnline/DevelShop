@@ -2,11 +2,9 @@ package kosmok.teamlebimbe.ecommerce.controller;
 
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
-<<<<<<< HEAD
-import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
-=======
+
 import kosmok.teamlebimbe.ecommerce.controller.dto.ItemDescriptionDto;
->>>>>>> 150c63715dd54d8bc008f4e82b09eb93741e37fb
+
 import kosmok.teamlebimbe.ecommerce.entities.Item;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 
@@ -32,15 +30,7 @@ public class TakeItemDescription {
 
     @GetMapping("/description/{id}")
     @PublicEndpoint
-<<<<<<< HEAD
-    public String getDescription(@PathVariable  long id) throws IOException {
-        if(itemRepository.existsById(id)) {
-            Item getItem = itemRepository.getReferenceById(id);
-            return getItem.getDescription();
-        }else  {
-            return null;
-        }
-=======
+
     public ItemDescriptionDto getDescription(@PathVariable  Long id) throws IOException {
 
         Optional<Item> itemToCheck = itemRepository.findById(id);
@@ -58,6 +48,6 @@ public class TakeItemDescription {
         }
 
         return null;
->>>>>>> 150c63715dd54d8bc008f4e82b09eb93741e37fb
+
     }
 }
