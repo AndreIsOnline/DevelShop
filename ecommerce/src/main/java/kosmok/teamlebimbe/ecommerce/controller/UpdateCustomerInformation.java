@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Role;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.NotNull;
+
 
 @RestController
 @RequestMapping("/update-customer-info")
@@ -25,18 +27,17 @@ public class UpdateCustomerInformation{
 
     @RoleSecurity(value = "customer")
     @PatchMapping
-    private BaseResponse updateCustomer( @RequestBody UpdateCustomerDto customer){
+    private BaseResponse updateCustomer( @RequestBody @NotNull UpdateCustomerDto customer){
         Long a = updateInfoDao.getIdByEmail(customer.getEmail());
         if(AuthenticationContext.get().getUserId() == a){
             updateInfoDao.UpdateCustomerInfo(customer);
             return new BaseResponse();
         }
-        return new BaseResponse("something went wrong");
+        return new BaseResponse("something went wrong", null);
 
     }
 
-
-
+    
 }
 
 

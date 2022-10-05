@@ -1,2 +1,2 @@
-# TeamDelleBimbe# ecommerce2.0
-# develShop
+# Java 3 Team 2
+# DevelShop 

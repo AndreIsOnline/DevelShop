@@ -23,11 +23,11 @@ public class DeleteCustomer {
     @RoleSecurity(value = {"admin","customer"})
     public BaseResponse deleteCustomerById(@PathVariable Long id) {
 
-        if(AuthenticationContext.get().getUserId() == id) {
+        if(AuthenticationContext.get().getUserId() == id || AuthenticationContext.get().getRoles().contains("admin")) {
             iRegistrationCustomerRepository.deleteById(id);
-            return new BaseResponse("Customer with id " + id + " has been deleted from the repository");
+            return new BaseResponse(null, "Customer with id " + id + " has been deleted from the repository");
 
-        }else return new BaseResponse("Deletion was not successful,if you don't are an Admin you can't delete another customer");
+        }else return new BaseResponse("Deletion was not successful,if you don't are an Admin you can't delete another customer",null);
 
     }
 

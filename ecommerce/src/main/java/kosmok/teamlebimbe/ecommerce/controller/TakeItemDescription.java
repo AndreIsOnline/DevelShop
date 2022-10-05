@@ -2,7 +2,9 @@ package kosmok.teamlebimbe.ecommerce.controller;
 
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
+
 import kosmok.teamlebimbe.ecommerce.controller.dto.ItemDescriptionDto;
+
 import kosmok.teamlebimbe.ecommerce.entities.Item;
 import kosmok.teamlebimbe.ecommerce.repository.ItemRepository;
 
@@ -28,6 +30,7 @@ public class TakeItemDescription {
 
     @GetMapping("/description/{id}")
     @PublicEndpoint
+
     public ItemDescriptionDto getDescription(@PathVariable  Long id) throws IOException {
 
         Optional<Item> itemToCheck = itemRepository.findById(id);
@@ -45,5 +48,6 @@ public class TakeItemDescription {
         }
 
         return null;
+
     }
 }

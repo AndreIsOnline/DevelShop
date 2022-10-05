@@ -1,5 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class OrderItems {
 
     private Long customerId;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Orders orderId;

@@ -1,5 +1,6 @@
 package kosmok.teamlebimbe.ecommerce.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.data.jpa.repository.Query;
 
 import javax.persistence.*;
@@ -20,7 +21,7 @@ public class Orders {
 
     @Column(name = "customer_id", nullable = false)
     private Long customerId;
-
+    @JsonIgnore
     @OneToMany(mappedBy = "orderId")
     private List<OrderItems> itemsInOrder;
 

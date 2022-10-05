@@ -1,6 +1,7 @@
 package kosmok.teamlebimbe.ecommerce.controller;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
 import kosmok.teamlebimbe.ecommerce.controller.dto.PostItemDto;
 import kosmok.teamlebimbe.ecommerce.entities.Item;

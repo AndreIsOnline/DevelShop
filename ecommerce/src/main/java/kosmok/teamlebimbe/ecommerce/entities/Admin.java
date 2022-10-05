@@ -18,10 +18,6 @@ public class Admin {
     private String email;
     @Column(length = 61)
     private String city;
-
-
-
-
     public Admin(){}
 
     public Long getId() {

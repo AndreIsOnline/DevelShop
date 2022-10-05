@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/view-store")
+@RequestMapping("/view-items-in-store")
 public class GetItemStoreName {
 
 

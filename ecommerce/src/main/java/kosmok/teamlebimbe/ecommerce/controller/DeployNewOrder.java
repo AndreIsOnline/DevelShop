@@ -59,7 +59,7 @@ public class DeployNewOrder  {
 
 
         } else {
-            return new BaseResponse("DB_ERROR");
+            return new BaseResponse("DB_ERROR", null);
         }
 
     }
