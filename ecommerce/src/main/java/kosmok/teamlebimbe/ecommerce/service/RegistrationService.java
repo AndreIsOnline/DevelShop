@@ -24,7 +24,7 @@ public class RegistrationService {
         if(registrationDao.save(payload)) {
             return new BaseResponse();
         } else {
-            return new BaseResponse("Error saving user");
+            return new BaseResponse("Error saving user", null);
         }
     }
 

@@ -44,7 +44,7 @@ public class UpdateStoreInformation {
             seller.setStoreType(payload.getStoreType());
             seller.setStoreName(payload.getStoreName());
             iSellerRepository.save(seller);
-            return new BaseResponse("done! your information have been updated");
+            return new BaseResponse(null, "done! your information have been updated");
         }
     }
 

@@ -7,12 +7,17 @@ public class BaseResponse {
 
     public BaseResponse() { }
 
-    public BaseResponse(String errorMessage) {
+    public BaseResponse(String errorMessage, String okMessage) {
         if (!(errorMessage == null || errorMessage.length() == 0)) {
             this.status = StatusEnum.KO;
+            this.message = errorMessage;
+        } else if ((!(okMessage == null || okMessage.length() == 0))) {
+            this.status = StatusEnum.OK;
+            this.message = okMessage;
         }
-        this.message = errorMessage;
+
     }
+
 
 
     public enum StatusEnum {
