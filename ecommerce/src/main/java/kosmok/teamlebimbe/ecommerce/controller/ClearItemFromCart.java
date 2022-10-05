@@ -38,9 +38,9 @@ public class ClearItemFromCart {
 
         if(currentItem.isPresent() && isItemOwnedByCustomer) {
             shoppingCartDao.deleteItemFromCart(itemId, currentCustomerId);
-            return new BaseResponse("ITEM_REMOVED_FROM_DB");
+            return new BaseResponse(null, "ITEM_REMOVED_FROM_DB");
         } else {
-            return new BaseResponse("DB_ERROR_FAILURE");
+            return new BaseResponse("DB_ERROR_FAILURE", null);
         }
     }
 

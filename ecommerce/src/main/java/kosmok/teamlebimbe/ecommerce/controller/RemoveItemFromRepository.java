@@ -37,7 +37,7 @@ public class RemoveItemFromRepository {
 
             return new BaseResponse();
         } else {
-             return new BaseResponse("ITEM_NOT_FOUND_IN_DB");
+             return new BaseResponse("ITEM_NOT_FOUND_IN_DB", null);
          }
 
     }

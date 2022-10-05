@@ -27,7 +27,7 @@ public class RegisterNewSeller {
             iSellerRepository.save(seller);
             return new BaseResponse();
         }else
-           return new BaseResponse("something went wrong!");
+           return new BaseResponse("something went wrong!", null);
 
     }
 }

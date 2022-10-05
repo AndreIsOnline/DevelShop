@@ -1,6 +1,6 @@
 package kosmok.teamlebimbe.ecommerce.controller;
 
-import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
+import it.pasqualecavallo.studentsmaterial.authorization_framework.security.PublicEndpoint;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.utils.BCryptPasswordEncoder;
 import kosmok.teamlebimbe.ecommerce.controller.dto.AdminDto;
@@ -14,23 +14,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.constraints.NotNull;
+
 @RestController
-@RequestMapping("/register-new-admin")
-public class RegisterNewAdmin {
+@RequestMapping("/register-first-admin")
+public class RegisterFirstAdmin {
 
 
-    @Autowired
-    AdminRegistrationService adminRegistrationService;
+        @Autowired
+        private IAdminRepository iAdminRepository;
+        @Autowired
+        private AdminRegistrationService adminRegistrationService;
 
-    @Autowired
-    private IAdminRepository iAdminRepository;
+        @PublicEndpoint
+        @PostMapping
+        public BaseResponse createFirstAdmin(@NotNull @RequestBody AdminDto payload){
 
-    @RoleSecurity(value = "admin")
-    @PostMapping
-    public BaseResponse createAdmin(@RequestBody AdminDto payload){
+            if(iAdminRepository.count() == 0) {
 
-        adminRegistrationService.registerAdmin(payload);
-        return new BaseResponse(null,"the admin has been successfully created");
+                adminRegistrationService.registerAdmin(payload);
 
-    }
-}
+                return new BaseResponse(null,"congratulations! you are the first admin");
+            }
+                return new BaseResponse("only the first admin can be created without added authorisations",null);
+            }
+        }

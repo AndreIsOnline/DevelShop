@@ -38,7 +38,7 @@ public class DeployNewOrder  {
 
             return new BaseResponse();
         } else {
-            return new BaseResponse("DB_ERROR");
+            return new BaseResponse("DB_ERROR", null);
         }
     }
 
