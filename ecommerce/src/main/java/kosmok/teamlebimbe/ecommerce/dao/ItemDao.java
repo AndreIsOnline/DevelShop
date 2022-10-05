@@ -55,12 +55,54 @@ public class ItemDao {
 	}
 
 	public boolean checkCount(Integer count, Long itemId) {
-		return jdbcTemplate.queryForObject("SELECT quantity_in_stock FROM ITEM WHERE item_id = ?", Integer.class,
-				itemId) >= count;
+		Integer countFromDb = jdbcTemplate.queryForObject("SELECT quantity_in_stock FROM ITEM WHERE item_id = ?", Integer.class,
+				itemId);
+		System.out.println("count param = " + count + "count from db = " + countFromDb);
+
+		if(countFromDb != null && countFromDb >= count) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public int updateItemQuantity(int i, Long itemId) {
 		return jdbcTemplate.update("UPDATE ITEM SET quantity_in_stock=? where item_id=?",i,itemId);
+	}
+
+	public void updateItemQuantityByItemId(Integer quantity, Long itemId) {
+		jdbcTemplate.update("UPDATE item SET quantity_in_stock = ? WHERE item_id = ?", quantity, itemId);
+	}
+
+	public Integer getItemPriceByItemId(Long itemId) {
+		return jdbcTemplate.queryForObject("SELECT unit_price FROM item WHERE item_id = ?", Integer.class, itemId);
+	}
+
+	public Integer getItemQuantityInStockByItemId(Long itemId) {
+		return jdbcTemplate.queryForObject("SELECT quantity_in_stock FROM item WHERE item_id = ?", Integer.class, itemId);
+	}
+
+	public List<ItemModel> getAllItemsFromStore() {
+		List<ItemModel> queryList = jdbcTemplate.query("SELECT * FROM item",
+				new RowMapper<ItemModel>(){
+			@Override
+			public ItemModel mapRow(ResultSet rs, int rowNum) throws SQLException {
+				ItemModel itemModel =new ItemModel();
+				itemModel.setId(rs.getLong("item_id"));
+				itemModel.setDescription(rs.getString("description"));
+				itemModel.setName(rs.getString("name"));
+				itemModel.setQuantityInStock(rs.getInt("quantity_in_stock"));
+				itemModel.setSellerId(rs.getLong("seller_id_seller_id"));
+				itemModel.setUnitPrice(rs.getInt("unit_price"));
+				itemModel.setTimeOfInsertion(rs.getLong("time_of_insertion"));
+				return itemModel;
+			}
+		});
+		if (queryList.isEmpty()){
+			return null;
+		}else {
+			return queryList;
+		}
 	}
 
 

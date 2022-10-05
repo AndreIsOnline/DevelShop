@@ -35,10 +35,15 @@ public class ShoppingCartDao {
     }
 
     public Integer getItemQuantityByItemIdAndCustomerId(Long itemId, Long customerId) {
-        Integer quantity = jdbcTemplate.queryForObject("SELECT quantity FROM shopping_kart WHERE " +
-                "item_item_id = ? AND registration_customer_id = ?", Integer.class, itemId, customerId);
+        try {
+            Integer quantity = jdbcTemplate.queryForObject("SELECT quantity FROM shopping_kart WHERE " +
+                    "item_item_id = ? AND registration_customer_id = ?", Integer.class, itemId, customerId);
 
-        return  quantity;
+            return  quantity;
+        } catch (Exception e) {
+            return null;
+        }
+
     }
     public int updateItemQuantity(int quantity, Long itemId, Long customerId) {
         return jdbcTemplate.update("UPDATE shopping_kart SET quantity = ? where item_item_id = ? " +
@@ -57,8 +62,9 @@ public class ShoppingCartDao {
     }
 
     public boolean checkIfUserHasItemInCart(Long itemId, Long userId) {
+
         try {
-            jdbcTemplate.queryForObject("SELECT 1 FROM shopping_kart sk WHERE sk.item_item_id = ? " +
+            jdbcTemplate.queryForObject("SELECT 1 FROM shopping_kart WHERE item_item_id = ? " +
                     "AND registration_customer_id = ?", Integer.class, itemId, userId);
             return true;
         } catch (DataAccessException e) {

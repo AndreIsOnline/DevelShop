@@ -15,7 +15,6 @@ public class Item {
     @Column(name = "item_id", nullable = false)
     private Long id;
 
-
     @Column(length = 61, nullable = false)
     private String name;
     @Column(length = 255, nullable = true)

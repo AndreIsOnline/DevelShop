@@ -71,37 +71,44 @@ public class ItemService {
 		BaseResponse br = null;
 
 		Long currentUserId = AuthenticationContext.get().getUserId();
-		Optional<ShoppingKart> itemToUpdate = iShoppingCart.findById(payload.getItemId());
 
-		System.out.println("ID FROM PRINCIPAL = " + currentUserId);
-		System.out.println("ITEM IS PRESENT? " + shoppingCartDao.checkIfUserHasItemInCart(payload.getItemId(), currentUserId));
+		Integer quantityFromCart = shoppingCartDao.getItemQuantityByItemIdAndCustomerId(payload.getItemId(), currentUserId);
+		Integer quantityFromPayload = payload.getCount();
+		Integer totalQuantity = 0;
 
-		if(itemToUpdate.isPresent() && shoppingCartDao.checkIfUserHasItemInCart(payload.getItemId(), currentUserId)) {
-			int quantityToUpdate = shoppingCartDao.getItemQuantityByItemIdAndCustomerId(
-					payload.getItemId(), currentUserId
-			) + payload.getCount();
-
-			System.out.println("NEW QUANTITY ISSS " + quantityToUpdate);
-
-			shoppingCartDao.updateItemQuantity(quantityToUpdate, payload.getItemId(), currentUserId);
-
-			if(quantityToUpdate == 0){
-				return new BaseResponse("DB_OPERATION_ERROR");
-			} else {
-				return new BaseResponse();
-			}
+		if(quantityFromCart != null) {
+			totalQuantity = quantityFromCart + quantityFromPayload;
 		} else {
-			if (itemDao.checkCount(payload.getCount(), payload.getItemId())) {
+			totalQuantity = quantityFromPayload;
+		}
+
+		if(itemDao.checkCount(totalQuantity, payload.getItemId()) == false) {
+			br = new BaseResponse("OUT_OF_STOCK");
+		} else {
+			if(shoppingCartDao.checkIfUserHasItemInCart(payload.getItemId(), currentUserId)) {
+				int quantityToUpdate = shoppingCartDao.getItemQuantityByItemIdAndCustomerId(
+						payload.getItemId(), currentUserId
+				) + payload.getCount();
+
+				System.out.println("QUANTITY TO UPDATE = " + quantityToUpdate);
+
+				shoppingCartDao.updateItemQuantity(quantityToUpdate, payload.getItemId(), currentUserId);
+
+				if(quantityToUpdate == 0){
+					return new BaseResponse("DB_OPERATION_ERROR");
+				} else {
+					return new BaseResponse();
+				}
+			} else {
 				Optional<RegistrationCustomer> customer = iRegistrationCustomerRepository.findByUsername(principal.getUsername());
 				if (itemDao.insertToShoppingCart(payload.getCount(), payload.getItemId(), customer.get().getId())) {
 					br = new BaseResponse();
 				} else {
 					br = new BaseResponse("DB_OPERATION_ERROR");
 				}
-			} else {
-				br = new BaseResponse("OUT_OF_STOCK");
 			}
 		}
+
 
 		return br;
 	}

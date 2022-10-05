@@ -3,6 +3,7 @@ package kosmok.teamlebimbe.ecommerce.controller;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
 import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
+import kosmok.teamlebimbe.ecommerce.dao.ItemDao;
 import kosmok.teamlebimbe.ecommerce.dao.OrderDao;
 import kosmok.teamlebimbe.ecommerce.dao.ShoppingCartDao;
 import kosmok.teamlebimbe.ecommerce.model.ShoppingCartModel;
@@ -23,6 +24,9 @@ public class DeployNewOrder  {
     @Autowired
     private OrderDao orderDao;
 
+    @Autowired
+    private ItemDao itemDao;
+
 
     @RoleSecurity(value = {"customer"})
     @PostMapping
@@ -32,14 +36,32 @@ public class DeployNewOrder  {
 
         List<ShoppingCartModel> currentCart = shoppingCartDao.getAllItemsByCustomerId();
 
-        if(currentCart != null && currentCart.size() > 0) {
-            orderDao.createNewOrderByCustomerIdAndByCartList(currentUserId, currentCart);
-            shoppingCartDao.deleteCartByCustomerId(currentUserId);
+        Integer currentItemQuantity;
+        Integer itemInStockQuantity;
+        Integer actualQuantity;
+        ShoppingCartModel currentItem;
 
+        if(currentCart != null && currentCart.size() > 0) {
+            for(int i = 0; i < currentCart.size(); i++) {
+                currentItem = currentCart.get(i);
+
+                currentItemQuantity = currentItem.getQuantity();
+                itemInStockQuantity = itemDao.getItemQuantityInStockByItemId(currentItem.getItemId());
+                actualQuantity = itemInStockQuantity - currentItemQuantity;
+
+                itemDao.updateItemQuantityByItemId(actualQuantity, currentItem.getItemId());
+
+            }
+            orderDao.createNewOrderByCustomerIdAndByCartList(currentUserId, currentCart);
+
+            shoppingCartDao.deleteCartByCustomerId(currentUserId);
             return new BaseResponse();
+
+
         } else {
             return new BaseResponse("DB_ERROR");
         }
+
     }
 
 }
