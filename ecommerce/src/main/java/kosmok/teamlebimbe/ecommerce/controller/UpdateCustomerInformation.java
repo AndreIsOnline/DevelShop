@@ -31,7 +31,7 @@ public class UpdateCustomerInformation{
             updateInfoDao.UpdateCustomerInfo(customer);
             return new BaseResponse();
         }
-        return new BaseResponse("something went wrong");
+        return new BaseResponse("something went wrong", null);
 
     }
 

@@ -54,12 +54,12 @@ public class ItemService {
 					payload.getUnitPrice(), seller.get().getId())) {
 				return new BaseResponse();
 			} else {
-				return new BaseResponse("DB_OPERATION_ERROR");
+				return new BaseResponse("DB_OPERATION_ERROR", null);
 			}
 		} else {
 			Integer itemToUpdate=itemDao.updateItemQuantity(currentItem.getQuantityInStock()+ payload.getQuantityInStock(),currentItem.getId());
 			if(itemToUpdate==0){
-				return new BaseResponse("DB_OPERATION_ERROR");
+				return new BaseResponse("DB_OPERATION_ERROR", null);
 			}else{
 				return new BaseResponse();
 			}
@@ -86,7 +86,7 @@ public class ItemService {
 			shoppingCartDao.updateItemQuantity(quantityToUpdate, payload.getItemId(), currentUserId);
 
 			if(quantityToUpdate == 0){
-				return new BaseResponse("DB_OPERATION_ERROR");
+				return new BaseResponse("DB_OPERATION_ERROR", null);
 			} else {
 				return new BaseResponse();
 			}
@@ -96,10 +96,10 @@ public class ItemService {
 				if (itemDao.insertToShoppingCart(payload.getCount(), payload.getItemId(), customer.get().getId())) {
 					br = new BaseResponse();
 				} else {
-					br = new BaseResponse("DB_OPERATION_ERROR");
+					br = new BaseResponse("DB_OPERATION_ERROR", null);
 				}
 			} else {
-				br = new BaseResponse("OUT_OF_STOCK");
+				br = new BaseResponse("OUT_OF_STOCK", null);
 			}
 		}
 

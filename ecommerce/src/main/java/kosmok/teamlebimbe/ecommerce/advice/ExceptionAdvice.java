@@ -16,20 +16,20 @@ public class ExceptionAdvice {
     @ExceptionHandler(value = { EmailAlredyExistException.class })
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public BaseResponse handleEmailError(EmailAlredyExistException e) {
-        return new BaseResponse(e.getMessage());
+        return new BaseResponse(e.getMessage(), null);
     }
 
     @ExceptionHandler(value = { UsernameAlredyExistException.class })
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public BaseResponse handleEmailError(UsernameAlredyExistException  e) {
-        return new BaseResponse(e.getMessage());
+        return new BaseResponse(e.getMessage(), null);
     }
     
     
     @ExceptionHandler(value = { UnauthorizedException.class })
     @ResponseStatus(value = HttpStatus.UNAUTHORIZED)
     public BaseResponse handleEmailError(UnauthorizedException  e) {
-        return new BaseResponse(e.getMessage());
+        return new BaseResponse(e.getMessage(), null);
     }
     
 }
