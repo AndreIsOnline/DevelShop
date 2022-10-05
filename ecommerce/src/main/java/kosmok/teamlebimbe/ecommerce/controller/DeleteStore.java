@@ -1,7 +1,8 @@
-package kosmok.teamlebimbe.ecommerce.controller.response;
+package kosmok.teamlebimbe.ecommerce.controller;
 
 import it.pasqualecavallo.studentsmaterial.authorization_framework.filter.AuthenticationContext;
 import it.pasqualecavallo.studentsmaterial.authorization_framework.security.RoleSecurity;
+import kosmok.teamlebimbe.ecommerce.controller.response.BaseResponse;
 import kosmok.teamlebimbe.ecommerce.repository.ISellerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

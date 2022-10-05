@@ -18,17 +18,10 @@ import javax.validation.constraints.NotNull;
 @RestController
 @RequestMapping("/update-store-information")
 public class UpdateStoreInformation {
-
-
     @Autowired
     ISellerRepository iSellerRepository;
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-
-
-
-
 
     @RoleSecurity(value = "seller")
     @PatchMapping
@@ -46,6 +39,7 @@ public class UpdateStoreInformation {
             iSellerRepository.save(seller);
             return new BaseResponse(null, "done! your information have been updated");
         }
+
     }
 
 
