@@ -32,7 +32,7 @@ public class UpdateStoreInformation {
             seller.setPassword(bCryptPasswordEncoder.encode(payload.getPassword()));
             seller.setCity(payload.getCity());
             seller.setSellerRating(payload.getSellerRating());
-            seller.setIvaGame(payload.getIvaGame());
+            seller.setIvaGame(payload.getTaxNumber());
             seller.setState(payload.getState());
             seller.setStoreType(payload.getStoreType());
             seller.setStoreName(payload.getStoreName());

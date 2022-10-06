@@ -6,7 +6,14 @@ import javax.persistence.*;
 
 public enum StoreTypes {
     HATS,
-    UPPER_BODY,
-    LOWER_BODY
+    TSHIRTS_POLOS,
+    SHIRTS,
+    DRESSES,
+    SWEATERS,
+    SUITS,
+    TROUSERS,
+    JEANS,
+    SHOES,
+    SKIRTS
     ;
 }

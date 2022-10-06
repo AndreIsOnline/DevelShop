@@ -2,10 +2,6 @@ package kosmok.teamlebimbe.ecommerce.controller.dto;
 
 import kosmok.teamlebimbe.ecommerce.entities.StoreTypes;
 
-import javax.persistence.Column;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 public class SellerDto {
 
     private String storeName;
@@ -22,7 +18,7 @@ public class SellerDto {
 
     private Integer sellerRating;
 
-    private String ivaGame;
+    private String taxNumber;
 
     public String getStoreName() {
         return storeName;
@@ -82,12 +78,12 @@ public class SellerDto {
         this.sellerRating = sellerRating;
     }
 
-    public String getIvaGame() {
-        return ivaGame;
+    public String getTaxNumber() {
+        return taxNumber;
     }
 
-    public void setIvaGame(String ivaGame) {
-        this.ivaGame = ivaGame;
+    public void setTaxNumber(String taxNumber) {
+        this.taxNumber = taxNumber;
     }
 
 

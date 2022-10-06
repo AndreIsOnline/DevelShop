@@ -21,8 +21,6 @@ public class GetOrdersByCustomerId {
     @Autowired
     private OrderDao orderDao;
 
-
-
     @GetMapping
     @RoleSecurity(value = {"admin", "customer"})
     public List<OrderModel> getOrdersByCustomerId() {
